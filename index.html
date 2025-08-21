@@ -34,7 +34,6 @@
 
   /* Footer */
   footer { text-align:center; padding:20px; background:#1a1a1a; color:white; margin-top:40px; }
-
 </style>
 </head>
 <body>
@@ -52,7 +51,9 @@
 
   <!-- Produit 1 : Canva Premium -->
   <div class="product">
-    <img src<a href='https://postimg.cc/5XMFDg48' target='_blank'><img src='https://i.postimg.cc/6p8L2bFb/IMG-20250815-170131.jpg' border='0' alt='IMG-20250815-170131'/></a>
+    <a href='https://postimg.cc/5XMFDg48' target='_blank'>
+      <img src='https://i.postimg.cc/6p8L2bFb/IMG-20250815-170131.jpg' alt='Canva Premium'/>
+    </a>
     <h3>Canva Premium</h3>
     <p>Accédez à toutes les fonctionnalités premium de Canva pour créer des designs professionnels facilement : modèles exclusifs, images de haute qualité et outils avancés pour vos projets créatifs.</p>
     <p>Prix : 1 200 F CFA</p>
@@ -64,7 +65,9 @@
 
   <!-- Produit 2 : CapCut Premium -->
   <div class="product">
-    <img src<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/BvMKmTWP/sddefault.jpg' border='0' alt='sddefault'/></a> 
+    <a href='https://postimages.org/' target='_blank'>
+      <img src='https://i.postimg.cc/BvMKmTWP/sddefault.jpg' alt='CapCut Premium'/>
+    </a>
     <h3>CapCut Premium</h3>
     <p>Profitez de toutes les options premium de CapCut pour monter vos vidéos comme un pro : effets spéciaux, transitions, musique libre de droits et exportation en haute qualité.</p>
     <p>Prix : 4 000 F CFA</p>
@@ -78,15 +81,15 @@
 
 <div class="order-form" id="order-form">
   <h2>Formulaire de commande</h2>
-  <form action="mailto:leericheofficiel.7@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="nom" placeholder="Votre nom" required>
-    <input type="email" name="email" placeholder="Votre email" required>
-    <select name="produit" required>
+  <form onsubmit="envoyerCommande(event)">
+    <input type="text" id="nom" placeholder="Votre nom" required>
+    <input type="email" id="email" placeholder="Votre email" required>
+    <select id="produit" required>
       <option value="">Choisissez un produit</option>
       <option value="Canva Premium">Canva Premium</option>
       <option value="CapCut Premium">CapCut Premium</option>
     </select>
-    <textarea name="message" placeholder="Message ou instructions" rows="4"></textarea>
+    <textarea id="message" placeholder="Message ou instructions" rows="4"></textarea>
     <button type="submit">Envoyer la commande</button>
   </form>
 </div>
@@ -94,6 +97,23 @@
 <footer>
   <p>&copy; 2025 Israël ADAKPON | Contact : +229 0140615372</p>
 </footer>
+
+<script>
+function envoyerCommande(event) {
+  event.preventDefault(); // bloque le rechargement
+
+  let nom = document.getElementById("nom").value;
+  let email = document.getElementById("email").value;
+  let produit = document.getElementById("produit").value;
+  let message = document.getElementById("message").value;
+
+  let numero = "2290140615372"; // ton numéro WhatsApp
+  let texte = `Bonjour Israël, je m'appelle ${nom} (${email}). Je veux commander ${produit}. ${message}`;
+
+  let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(texte);
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
